@@ -1,7 +1,9 @@
+%define	oname	python
+
 Summary:	The sources for the PyMATE Python extension module
 Name:		python-mate
 Version:	1.2.0
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		Development/GNOME and GTK+
 URL:		http://mate-desktop.org
@@ -17,8 +19,8 @@ BuildRequires:	pkgconfig(pymatecorba-2)
 BuildRequires:	pkgconfig(python)
 BuildRequires:	libgcrypt-devel
 
-Requires: pygtk2.0
-Requires: %{name}-matecomponent
+Requires:	pygtk2.0
+Requires:	%{oname}-matecomponent
 
 %description
 The python-mate package contains the source packages for the Python
@@ -28,44 +30,40 @@ PyMATE is an extension module for Python that provides access to the
 base MATE libraries, so you have access to more widgets, a simple
 configuration interface, and metadata support.
 
-%package canvas
-Version: %{version}
+%package -n %{oname}-matecanvas
 Summary: Python bindings for the MATE Canvas
 Group: Development/GNOME and GTK+
 Requires: pygtk2.0
 Requires: %{name} = %{version}-%release
 
-%description canvas
+%description -n %{oname}-matecanvas
 This module contains a wrapper that allows use of the MATE Canvas
 in Python.
 
-%package matecomponent
-Version: %{version}
+%package -n %{oname}-matecomponent
 Summary: Python bindings for interacting with matecomponent
 Group: Development/GNOME and GTK+
-Requires: %{name}-canvas = %{version}-%release
+Requires: %{oname}-matecanvas = %{version}-%release
 Requires: python-corba
 
-%description matecomponent
+%description -n %{oname}-matecomponent
 This module contains a wrapper that allows the creation of matecomponent
 components and the embedding of matecomponent components in Python.
 
-%package mateconf
-Version: %{version}
+%package -n %{oname}-mateconf
 Summary: Python bindings for interacting with mate-conf
 Group: Development/GNOME and GTK+
 Requires: mate-conf
 
-%description mateconf
+%description -n %{oname}-mateconf
 This module contains a wrapper that allows the use of mate-conf via Python.
 
-%package matevfs
-Version: %{version}
+%package -n %{oname}-matevfs
 Summary: Python bindings for interacting with mate-vfs
 Group: Development/GNOME and GTK+
 Requires: mate-vfs
 
-%description matevfs
+%description -n %{oname}-matevfs
 This module contains a wrapper that allows the use of mate-vfs via python.
 
 %package devel
@@ -95,23 +93,22 @@ find %{buildroot} -name '*.la' -exec rm {} \;
 %{py_platsitedir}/gtk-2.0/mate/_mate.so
 %{py_platsitedir}/gtk-2.0/mate/ui.so
 
-%files canvas
+%files -n %{oname}-matecanvas
 %doc examples/canvas
 %{py_platsitedir}/gtk-2.0/mate/canvas.*
 %{py_platsitedir}/gtk-2.0/matecanvas.so
 
-
-%files matecomponent
+%files -n %{oname}-matecomponent
 %doc examples/matecomponent
 %dir %{py_platsitedir}/gtk-2.0/matecomponent/
 %{py_platsitedir}/gtk-2.0/matecomponent/__init__.*
 %{py_platsitedir}/gtk-2.0/matecomponent/*.so
 
-%files mateconf
+%files -n %{oname}-mateconf
 %doc examples/mateconf
 %{py_platsitedir}/gtk-2.0/mateconf*
 
-%files matevfs
+%files -n %{oname}-matevfs
 %doc examples/vfs
 %{py_platsitedir}/gtk-2.0/mate/vfs*
 %{py_platsitedir}/gtk-2.0/matevfs
