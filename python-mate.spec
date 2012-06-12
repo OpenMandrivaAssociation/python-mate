@@ -3,7 +3,7 @@
 Summary:	The sources for the PyMATE Python extension module
 Name:		python-mate
 Version:	1.2.0
-Release:	2
+Release:	3
 License:	LGPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://mate-desktop.org
@@ -19,6 +19,8 @@ BuildRequires:	pkgconfig(pymatecorba-2)
 BuildRequires:	pkgconfig(python)
 BuildRequires:	libgcrypt-devel
 
+Requires:	libmate
+Requires:	libmateui
 Requires:	pygtk2.0
 Requires:	%{oname}-matecomponent
 
@@ -33,9 +35,10 @@ configuration interface, and metadata support.
 %package -n %{oname}-matecanvas
 Summary:	Python bindings for the MATE Canvas
 Group:		Graphical desktop/GNOME
+Requires:	libmatecanvas
 Requires:	pygtk2.0
 Requires:	%{name} = %{version}-%release
-Obsoletes:	%{name}-matecanvas
+Obsoletes:	%{name}-mate-canvas
 
 %description -n %{oname}-matecanvas
 This module contains a wrapper that allows use of the MATE Canvas
@@ -44,6 +47,7 @@ in Python.
 %package -n %{oname}-matecomponent
 Summary:	Python bindings for interacting with matecomponent
 Group:		Graphical desktop/GNOME
+Requires:	libmatecomponent
 Requires:	%{oname}-matecanvas = %{version}-%release
 Requires:	python-corba
 Obsoletes:	%{name}-matecomponent
