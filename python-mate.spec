@@ -2,12 +2,12 @@
 
 Summary:	The sources for the PyMATE Python extension module
 Name:		python-mate
-Version:	1.2.0
-Release:	3
+Version:	1.4.0
+Release:	1
 License:	LGPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://mate-desktop.org
-Source0:	http://pub.mate-desktop.org/releases/1.2/python-mate-%{version}.tar.xz
+Source0:	http://pub.mate-desktop.org/releases/1.4/python-mate-%{version}.tar.xz
 
 BuildRequires:	mate-common
 BuildRequires:	pkgconfig(gtk+-2.0)
@@ -37,8 +37,7 @@ Summary:	Python bindings for the MATE Canvas
 Group:		Graphical desktop/GNOME
 Requires:	libmatecanvas
 Requires:	pygtk2.0
-Requires:	%{name} = %{version}-%release
-Obsoletes:	%{name}-mate-canvas
+Requires:	%{name} = %{version}
 
 %description -n %{oname}-matecanvas
 This module contains a wrapper that allows use of the MATE Canvas
@@ -48,9 +47,8 @@ in Python.
 Summary:	Python bindings for interacting with matecomponent
 Group:		Graphical desktop/GNOME
 Requires:	libmatecomponent
-Requires:	%{oname}-matecanvas = %{version}-%release
+Requires:	%{oname}-matecanvas = %{version}
 Requires:	python-corba
-Obsoletes:	%{name}-matecomponent
 
 %description -n %{oname}-matecomponent
 This module contains a wrapper that allows the creation of matecomponent
@@ -60,7 +58,6 @@ components and the embedding of matecomponent components in Python.
 Summary:	Python bindings for interacting with mate-conf
 Group:		Graphical desktop/GNOME
 Requires:	mate-conf
-Obsoletes:	%{name}-mateconf
 
 %description -n %{oname}-mateconf
 This module contains a wrapper that allows the use of mate-conf via Python.
@@ -69,7 +66,6 @@ This module contains a wrapper that allows the use of mate-conf via Python.
 Summary:	Python bindings for interacting with mate-vfs
 Group:		Graphical desktop/GNOME
 Requires:	mate-vfs
-Obsoletes:	%{name}-matevfs
 
 %description -n %{oname}-matevfs
 This module contains a wrapper that allows the use of mate-vfs via python.
@@ -131,4 +127,19 @@ find %{buildroot} -name '*.la' -exec rm {} \;
 %{_datadir}/pygtk/2.0/defs/*.defs
 %{_datadir}/pygtk/2.0/defs/mate/*.defs
 %{_datadir}/pygtk/2.0/argtypes
+
+
+
+%changelog
+* Tue Jun 12 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.2.0-3
++ Revision: 805271
+- rebuild adding requires to make MATE function properly
+
+* Fri Jun 08 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.2.0-2
++ Revision: 803243
+- rebuild to remove extra mate in sub pkg names
+
+* Tue Jun 05 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.2.0-1
++ Revision: 802527
+- imported package python-mate
 
