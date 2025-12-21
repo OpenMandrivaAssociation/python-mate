@@ -9,6 +9,11 @@ Group:		Graphical desktop/GNOME
 URL:		https://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/1.4/python-mate-%{version}.tar.xz
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	mate-common
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(libmate-2.0)
